@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import getCurrentUser from "@/actions/getCurrentUser";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,8 +23,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const currentUser = await getCurrentUser()
-  console.log(currentUser)
 
   return (
     <html lang="en">

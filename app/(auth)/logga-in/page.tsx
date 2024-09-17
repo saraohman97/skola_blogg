@@ -41,20 +41,6 @@ const LoginPage = () => {
             setMessage("Något gick fel.")
         }
     })
-
-    // axios
-    //   .post(`/api/register`, data)
-    //   .then(() => {
-    //     setMessage("Användare skapad!");
-    //     router.push("/dashboard")
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setMessage("Något gick fel.");
-    //   })
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
   };
 
   return (

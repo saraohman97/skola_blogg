@@ -55,12 +55,14 @@ model Post {
   updatedAt DateTime @updatedAt
   userId String @db.ObjectId
 
-  food_category Boolean
-  wine_category Boolean
-  baking_category Boolean
-  holiday_category Boolean
-  school_category Boolean
-  other_category Boolean
+  category String
+
+  // food_category Boolean
+  // wine_category Boolean
+  // baking_category Boolean
+  // holiday_category Boolean
+  // school_category Boolean
+  // other_category Boolean
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

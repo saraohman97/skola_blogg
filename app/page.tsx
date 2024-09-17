@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Navbar from "@/components/navbar";
+import Sidebar from "@/components/sidebar";
 
 export default function Home() {
   const posts = [
@@ -82,78 +83,7 @@ export default function Home() {
           </div>
 
           {/* SIDEBAR */}
-          <div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col items-center">
-                <Image
-                  src="/food.jpg"
-                  alt=""
-                  height={500}
-                  width={500}
-                  className="w-20 h-20 object-cover rounded-full"
-                />
-                <p className="text-center text-sm font-bold">Rätter</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Image
-                  src="/wine.jpg"
-                  alt=""
-                  height={500}
-                  width={500}
-                  className="w-20 h-20 object-cover rounded-full"
-                />
-                <p className="text-center text-sm font-bold">Somelier</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Image
-                  src="/konfektyr.jpg"
-                  alt=""
-                  height={500}
-                  width={500}
-                  className="w-20 h-20 object-cover rounded-full"
-                />
-                <p className="text-center text-sm font-bold">Bakverk</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Image
-                  src="/christmas.jpg"
-                  alt=""
-                  height={500}
-                  width={500}
-                  className="w-20 h-20 object-cover rounded-full"
-                />
-                <p className="text-center text-sm font-bold">Högtider</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Image
-                  src="/school.jpg"
-                  alt=""
-                  height={500}
-                  width={500}
-                  className="w-20 h-20 object-cover rounded-full"
-                />
-                <p className="text-center text-sm font-bold">Skola</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Image
-                  src="/other.jpg"
-                  alt=""
-                  height={500}
-                  width={500}
-                  className="w-20 h-20 object-cover rounded-full"
-                />
-                <p className="text-center text-sm font-bold">Annat</p>
-              </div>
-            </div>
-
-            <h2 className="text-xl font-bold mb-3 mt-10">
-              Innehållsförteckning
-            </h2>
-            <h3 className="text-lg">Kockskola</h3>
-            <p className="text-sm hover:underline underline-offset-4 cursor-default w-fit">
-              Skolstart
-            </p>
-          </div>
+          <Sidebar />
         </div>
       </div>
     </>
