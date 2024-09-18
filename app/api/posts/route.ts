@@ -20,11 +20,11 @@ export async function POST(
         category
     } = body;
 
-    // Object.keys(body).forEach((value) => {
-    //     if (!body[value]) {
-    //         NextResponse.error();
-    //     }
-    // })
+    Object.keys(body).forEach((value) => {
+        if (!body[value]) {
+            NextResponse.error();
+        }
+    })
 
     const post = await prismadb.post.create({
         data: {

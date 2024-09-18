@@ -1,58 +1,17 @@
 import Image from "next/image";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
+import EmptyState from "@/components/empty-state";
+import getPosts from "@/actions/getPosts";
 
-export default function Home() {
-  const posts = [
-    {
-      id: 1,
-      heading: "Skolstart 1",
-      text: "Grå eller vita Legraboxlådor i metall från välrenommerade Blum ingår som standard i alla våra kök. Våra stommar är byggda i en 19 mm möbelskiva, klädd med grå eller vit melamin. Önskar du uppgradera till lådor i massiv ek, måttanpassade lådinsatser eller fanérade skåp, finns detta att välja som tillval, se exempel längre ner.",
-      date: "14 SEP 2024",
-      image: "/bg.jpg",
-    },
-    {
-      id: 2,
-      heading: "Skolstart 2",
-      text: "Grå eller vita Legraboxlådor i metall från välrenommerade Blum ingår som standard i alla våra kök. Klädd med grå eller vit melamin. Önskar du uppgradera till lådor i massiv ek, måttanpassade lådinsatser eller fanérade skåp, finns detta att välja som tillval, se exempel längre ner.",
-      date: "14 SEP 2024",
-      image: "/wine.jpg",
-    },
-    {
-      id: 3,
-      heading: "Skolstart",
-      text: "Grå eller vita Legraboxlådor i metall från välrenommerade Blum ingår som standard i alla våra kök. Våra stommar är byggda i en 19 mm möbelskiva, klädd med grå eller vit melamin. Önskar du uppgradera till lådor i massiv ek, måttanpassade lådinsatser eller fanérade skåp, finns detta att välja som tillval, se exempel längre ner.",
-      date: "14 SEP 2024",
-      image: "/konfektyr.jpg",
-    },
-    {
-      id: 4,
-      heading: "Skolstart",
-      text: "Grå eller vita Legraboxlådor i metall från välrenommerade Blum ingår som standard i alla våra kök. Våra stommar är byggda i en 19 mm möbelskiva, klädd med grå eller vit melamin. Önskar du uppgradera till lådor i massiv ek, måttanpassade lådinsatser eller fanérade skåp, finns detta att välja som tillval, se exempel längre ner.",
-      date: "14 SEP 2024",
-      image: "/other.jpg",
-    },
-    {
-      id: 4,
-      heading: "Skolstart",
-      text: "Grå eller vita Legraboxlådor i metall från välrenommerade Blum ingår som standard i alla våra kök. Våra stommar är byggda i en 19 mm möbelskiva, klädd med grå eller vit melamin. Önskar du uppgradera till lådor i massiv ek, måttanpassade lådinsatser eller fanérade skåp, finns detta att välja som tillval, se exempel längre ner.",
-      date: "14 SEP 2024",
-      image: "/food.jpg",
-    },
-    {
-      id: 4,
-      heading: "Skolstart",
-      text: "Grå eller vita Legraboxlådor i metall från välrenommerade Blum ingår som standard i alla våra kök. Våra stommar är byggda i en 19 mm möbelskiva, klädd med grå eller vit melamin. Önskar du uppgradera till lådor i massiv ek, måttanpassade lådinsatser eller fanérade skåp, finns detta att välja som tillval, se exempel längre ner.",
-      date: "14 SEP 2024",
-      image: "/christmas.jpg",
-    },
-  ];
+export default async function Home() {
+  const posts = await getPosts();
 
   return (
     <>
       <Navbar />
       <div className="bg-[#FEFEFE] p-4 lg:p-10">
-        <div className="flex flex-col-reverse relative lg:flex-row gap-10 lg:mx-20">
+        <div className="flex flex-col-reverse justify-end relative lg:flex-row gap-10 lg:mx-20">
           <Image
             alt=""
             src="/devil2.png"
@@ -66,21 +25,25 @@ export default function Home() {
           </div>
 
           {/* MAINBAR */}
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
-            {posts.map((post) => (
-              <div key={post.id} className="pb-10 relative">
-                <Image
-                  src={post.image}
-                  alt=""
-                  height={2000}
-                  width={2000}
-                  className="object-cover max-lg:h-20"
-                />
-                <div className="font-bold absolute">{post.heading}</div>
-                <div className="text-xs absolute right-0">{post.date}</div>
-              </div>
-            ))}
-          </div>
+          {posts.length === 0 ? (
+            <EmptyState />
+          ) : (
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 w-fit">
+              {posts.map((post) => (
+                <div key={post.id} className="pb-10 relative">
+                    <Image
+                      src={post.imageSrc}
+                      alt=""
+                      height={1000}
+                      width={1000}
+                      className="object-cover max-lg:h-20 min-h-40 min-w-40 bg-neutral-100"
+                    />
+                  <div className="font-bold absolute">{post.title}</div>
+                  {/* <div className="text-xs absolute right-0">{post.createdAt}</div> */}
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* SIDEBAR */}
           <Sidebar />

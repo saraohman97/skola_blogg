@@ -22,10 +22,11 @@ const ImageUpload: React.FC<ImageUploadProps> = ({onChange, value}) => {
     return ( 
         <CldUploadWidget
         onUpload={handleUpload}
+        // onUploadAdded={handleUpload}
         uploadPreset="skola-blogg"
-        options={{
-            maxFiles: 1
-        }}
+        // options={{
+        //     maxFiles: 1
+        // }}
         >
             {({ open }) => {
                 return (
